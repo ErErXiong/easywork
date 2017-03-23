@@ -20,7 +20,7 @@
 	<!-- js -->
 	<script src="web-part/easy/js/jquery.js"></script>
 	<script>
-		//
+		///* 哈哈 */
 	</script>
 </body>
 </html>
