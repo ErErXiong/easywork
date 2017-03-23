@@ -13,6 +13,7 @@ public class DemoController extends BaseController {
 	@RequestMapping("/view")
 	public String view() {
 		// return "/demo/view";
+		System.out.println("测试github");
 		return "/proj-a-b/view";
 	}
 
