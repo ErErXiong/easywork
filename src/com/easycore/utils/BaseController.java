@@ -62,6 +62,7 @@ public class BaseController {
 		}
 	}
 
+
 	// 获取Application(ServletContext)对象
 	public ServletContext getApp(HttpServletRequest req) {
 		return req.getServletContext();

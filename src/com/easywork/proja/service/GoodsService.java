@@ -21,6 +21,12 @@ public class GoodsService {
 		return goodsMapper;
 	}
 
+	public List<Goods> queryAll(){
+		
+		List<Goods> selectAll = goodsMapper.selectAll();
+		return selectAll;
+	}
+	
 	// 按分页从数据库获取所有产品的内容
 	public MyPage<Goods> queryGoodsByPaging(int page, int rows) {
 		// 获取总页数
@@ -31,6 +37,37 @@ public class GoodsService {
 		// 把 页面总数total和goodslist 放入MyPage对象中， 打包传递
 		MyPage<Goods> myPage = new MyPage<Goods>(total, goodsList);
 		return myPage;
+	}
+	
+	/**按id查询对应的Goods详情
+	 * @param parseLong
+	 */
+	public Goods queryGoodsById(long parseLong) {
+		Goods good = goodsMapper.selectByPrimaryKey(parseLong);
+		return good;
+	}
+	
+	/** 按name 模糊查询
+	 * @param name
+	 */
+	public List<String> queryByName(String name) {
+		List<String> queryByName = goodsMapper.queryByName(name);
+		return queryByName;
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void insertGoods(Goods goods){
+	
+			{
+//				通过创建人姓名查找创建人id，然后set进去
+				goods.setCreateid(10L);
+			}
+			goodsMapper.insertGoods();
+			{
+//				创建user-goods 关联表
+			}
+		
 	}
 
 	/**
@@ -46,12 +83,8 @@ public class GoodsService {
 		}
 	}
 
-	/**按id查询对应的Goods详情
-	 * @param parseLong
-	 */
-	public Goods queryGoodsById(long parseLong) {
-		Goods good = goodsMapper.selectByPrimaryKey(parseLong);
-		return good;
-	}
+
+
+
 
 }

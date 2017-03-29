@@ -39,7 +39,9 @@
 						<li style="line-height:25px;"><a class="link ft-g"
 							href="javascript:" view="user" onclick="toTab(this);">注册用户</a></li>
 						<li style="line-height:25px;"><a class="link ft-g"
-							href="javascript:" view="book" onclick="toTab(this);">约单签单</a></li>
+							href="javascript:" view="user" onclick="toTab(this);">意向跟踪</a></li>
+						<li style="line-height:25px;"><a class="link ft-g"
+							href="javascript:" view="book" onclick="toTab(this);">签单记录</a></li>
 					</ul>
 				</div>
 				<div title="<i class='fa fa-paper-plane'></i> 留言管理">
