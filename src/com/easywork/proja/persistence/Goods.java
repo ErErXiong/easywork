@@ -26,6 +26,11 @@ public class Goods {
     private Double price;
 
     /**
+     * 团购：每多购买一份，基给予折扣
+     */
+    private Integer discount;
+
+    /**
      * 底价，60 为6折
      */
     private Integer buttomprice;
@@ -35,8 +40,14 @@ public class Goods {
      */
     private Integer bookprice;
 
+    /**
+     * 1为上架，0为下架
+     */
     private Integer state;
 
+    /**
+     * 人个还是企业
+     */
     private String type;
 
     private String memo;
@@ -148,6 +159,24 @@ public class Goods {
     }
 
     /**
+     * 获取团购：每多购买一份，基给予折扣
+     *
+     * @return discount - 团购：每多购买一份，基给予折扣
+     */
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    /**
+     * 设置团购：每多购买一份，基给予折扣
+     *
+     * @param discount 团购：每多购买一份，基给予折扣
+     */
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    /**
      * 获取底价，60 为6折
      *
      * @return buttomprice - 底价，60 为6折
@@ -184,28 +213,36 @@ public class Goods {
     }
 
     /**
-     * @return state
+     * 获取1为上架，0为下架
+     *
+     * @return state - 1为上架，0为下架
      */
     public Integer getState() {
         return state;
     }
 
     /**
-     * @param state
+     * 设置1为上架，0为下架
+     *
+     * @param state 1为上架，0为下架
      */
     public void setState(Integer state) {
         this.state = state;
     }
 
     /**
-     * @return type
+     * 获取人个还是企业
+     *
+     * @return type - 人个还是企业
      */
     public String getType() {
         return type;
     }
 
     /**
-     * @param type
+     * 设置人个还是企业
+     *
+     * @param type 人个还是企业
      */
     public void setType(String type) {
         this.type = type;
@@ -224,11 +261,4 @@ public class Goods {
     public void setMemo(String memo) {
         this.memo = memo;
     }
-
-	@Override
-	public String toString() {
-		return "Goods [id=" + id + ", name=" + name + ", preiod=" + preiod + ", createid=" + createid + ", createname="
-				+ createname + ", createtime=" + createtime + ", price=" + price + ", buttomprice=" + buttomprice
-				+ ", bookprice=" + bookprice + ", state=" + state + ", type=" + type + ", memo=" + memo + "]";
-	}
 }

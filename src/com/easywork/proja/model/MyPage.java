@@ -2,8 +2,6 @@ package com.easywork.proja.model;
 
 import java.util.List;
 
-import com.easywork.proja.persistence.Goods;
-
 public class MyPage<T> {
 	private int total;
 	private List<T> rows;

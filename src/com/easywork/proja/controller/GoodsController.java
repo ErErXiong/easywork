@@ -33,12 +33,13 @@ public class GoodsController extends BaseController {
 	 * @param rows	每页显示数
 	 */
 	@RequestMapping("/queryGoodsByPaging")
-	public String queryGoodsByPaging(HttpServletRequest resp,int page,int rows,String data){
+	public String queryGoodsByPaging(HttpServletRequest req,int page,int rows,String data){
 		MyPage<Goods> allGoods = goodsService.queryGoodsByPaging(page,rows);
 		for (Goods good : allGoods.getRows()) {
 			System.out.println(good);
 		}
-		resp.setAttribute("allGoods", allGoods);
+		req.setAttribute("allGoods", allGoods);
+		/*异步的请求（会自动接收返回值的方法）才可以使用下面这个方法传值。 不然就放到req.setAttribute里*/
 //		super.printJson(resp, allGoods);
 		return "/proj-a-f/index";
 	}
@@ -63,13 +64,22 @@ public class GoodsController extends BaseController {
 	
 	/**按id查询对应的Goods详情
 	 * @param ids 以逗号隔开的多个id值
+	 * 	state  用于区分前端、后端 的请求
 	 */
 	@RequestMapping("/queryGoodsById")
-	@ResponseBody
-	public void queryGoodsById(HttpServletResponse resp,@RequestParam(value="rows")String ids){
+	public String queryGoodsById(HttpServletRequest req,String state,@RequestParam(value="rows")String ids){
 		String[] split = ids.split(",");
 		Goods queryGoodsById = goodsService.queryGoodsById(Long.parseLong(split[0]));
-		super.printJson(resp, queryGoodsById);
+		req.setAttribute("queryGoodsById", queryGoodsById);
+		if("b".equals(state)){
+			//返回前端的商品详情页面
+			return "/proj-a-b/goodsDetail";
+		}else if("f".equals(state)){
+			return "/proj-a-f/goodsDetail";
+		}else {
+			return "/proj-a-f/error";
+		}
+		
 	}
 
 	

@@ -20,6 +20,11 @@ public class DemoController extends BaseController {
 		// return "/demo/view";
 		return "/proj-a-f/index";
 	}
+	@RequestMapping("/userzero")
+	public String view3() {
+		// return "/demo/view";
+		return "/proj-a-f/zero";
+	}
 
 	// 打开子视图
 	@RequestMapping("/tab/{view}")

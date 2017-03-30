@@ -79,7 +79,7 @@
 			};
 			alert(ids);
 			/*异步提交的另一种写法  $.post("url",{json参数},function(){成功后的函数})) */
-			$.post("proja/Goods/queryGoodsById", {
+			$.post("proja/Goods/queryGoodsById?state=b", {
 				/* 传参，用JSON格式传 */
 				rows : ids.toString()
 			}, function(data) {});
