@@ -35,7 +35,7 @@ public class GoodsService {
 		PageHelper.startPage(page, rows);
 		List<Goods> goodsList = goodsMapper.selectAll();
 		// 把 页面总数total和goodslist 放入MyPage对象中， 打包传递
-		MyPage<Goods> myPage = new MyPage<Goods>(total, goodsList);
+		MyPage<Goods> myPage = new MyPage<Goods>(total, goodsList,page,rows);
 		return myPage;
 	}
 	

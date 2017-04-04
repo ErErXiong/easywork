@@ -11,17 +11,12 @@ import com.easycore.utils.BaseController;
 @RequestMapping("/demo")
 public class DemoController extends BaseController {
 	@RequestMapping("/view")
-	public String view() {
+	public String viewb() {
 		// return "/demo/view";
 		return "/proj-a-b/view";
 	}
-	@RequestMapping("/userview")
-	public String view2() {
-		// return "/demo/view";
-		return "/proj-a-f/index";
-	}
 	@RequestMapping("/userzero")
-	public String view3() {
+	public String viewb1() {
 		// return "/demo/view";
 		return "/proj-a-f/zero";
 	}
@@ -29,7 +24,25 @@ public class DemoController extends BaseController {
 	// 打开子视图
 	@RequestMapping("/tab/{view}")
 	public String tab(@PathVariable("view") String view) {
-		return "/proj-a-b/" + view;
+		return "/proj-a-f/" + view;
+	}
+	
+	
+	//转跳 前台主页面
+	@RequestMapping("/userview")
+	public String viewf() {
+		// return "/demo/view";
+		return "/proj-a-f/index";
+	}
+	// 打开前台 意向 页面
+	@RequestMapping("/intention")
+	public String tabf1() {
+		return "/proj-a-f/intention";
+	}
+	// 打开前台 意向 页面
+	@RequestMapping("/bought")
+	public String tabf2() {
+		return "/proj-a-f/bought";
 	}
 
 }

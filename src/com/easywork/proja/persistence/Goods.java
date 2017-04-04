@@ -261,4 +261,12 @@ public class Goods {
     public void setMemo(String memo) {
         this.memo = memo;
     }
+
+	@Override
+	public String toString() {
+		return "Goods [id=" + id + ", name=" + name + ", preiod=" + preiod + ", createid=" + createid + ", createname="
+				+ createname + ", createtime=" + createtime + ", price=" + price + ", discount=" + discount
+				+ ", buttomprice=" + buttomprice + ", bookprice=" + bookprice + ", state=" + state + ", type=" + type
+				+ ", memo=" + memo + "]";
+	}
 }
