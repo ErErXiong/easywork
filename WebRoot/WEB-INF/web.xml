@@ -42,11 +42,11 @@
 
 	<!-- 欢迎路径 -->
 	<welcome-file-list>
-		<welcome-file>demo/view</welcome-file>
+		<welcome-file>demo/userview</welcome-file>
 	</welcome-file-list>
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
-		<url-pattern>/demo/view</url-pattern>
+		<url-pattern>/demo/userview</url-pattern>
 	</servlet-mapping>
 
 	<!-- 映射全部url -->

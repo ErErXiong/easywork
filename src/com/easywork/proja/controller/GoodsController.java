@@ -39,9 +39,17 @@ public class GoodsController extends BaseController {
 			System.out.println(good);
 		}
 		req.setAttribute("allGoods", allGoods);
-		/*异步的请求（会自动接收返回值的方法）才可以使用下面这个方法传值。 不然就放到req.setAttribute里*/
+//		异步的请求（会自动接收返回值的方法）才可以使用下面这个方法传值。 不然就放到req.setAttribute里
 //		super.printJson(resp, allGoods);
 		return "/proj-a-f/index";
+	}
+	@RequestMapping("/queryFontGoodsByPaging")
+	public void queryFontGoodsByPaging(HttpServletResponse resp,int page,int rows,String data){
+		MyPage<Goods> allGoods = goodsService.queryGoodsByPaging(page,rows);
+		for (Goods good : allGoods.getRows()) {
+			System.out.println(good);
+		}
+		super.printJson(resp, allGoods);
 	}
 	
 	/** 异步 模糊查询的保险名称
@@ -82,49 +90,19 @@ public class GoodsController extends BaseController {
 		
 	}
 
-	
-	/**
-	 * @return 转跳到 增添 保险项目 页面
-	 */
-	@RequestMapping("/addGoodsView")
-	public String getNewView(){
-		System.out.println("addGoodsView");
-		return "/proj-a-b/addIns";
+	@RequestMapping("addProduct")
+	public void addProduct(HttpServletResponse resp,Goods goods){
+		boolean result = goodsService.insertGoods(goods);
+		printJson(resp, result);
 	}
-	
-	/**
-	 * @return 转跳到 保险的详单页面
-	 */
-	@RequestMapping("/lookGoodsView")
-	public String lookGoodsView(){
-		System.out.println("getNewView");
-		return "/proj-a-b/goodsDetail";
+	@RequestMapping("updateProduct")
+	public void updateProduct(HttpServletResponse resp,Goods goods,long id){
+		boolean result = goodsService.updateProduct(id,goods);
+		printJson(resp, result);
 	}
-	
-	/**
-	 * @return 转跳到 保险的详单页面
-	 */
-	@RequestMapping("/editGoodsView")
-	public String editGoodsView(){
-		System.out.println("editGoodsView");
-		return "/proj-a-b/editGoods";
-	}
-	
-	/** 新增Goods 
-	 * @param goods 接收addIns页面表单 传来的goods
-	 */
-	@RequestMapping("/addInsForm")
-	@ResponseBody
-	public void addGoods(Goods goods){
-		goodsService.insertGoods(goods);
-	}
-	
-	/**按id号删除 对应的保险信息
-	 * @param ids  以逗号隔开的多个id值
-	 */
-	@RequestMapping("/deleteGoods")
-	@ResponseBody
-	public void deleteGoods(@RequestParam(value="rows")String ids){
-		goodsService.deleteGoods(ids);
+	@RequestMapping("deleteProduct")
+	public void deleteProduct(HttpServletResponse resp,String id){
+		boolean result = goodsService.deleteGoods(id);
+		printJson(resp, result);
 	}
 }

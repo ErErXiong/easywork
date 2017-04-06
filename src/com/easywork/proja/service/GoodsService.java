@@ -57,30 +57,38 @@ public class GoodsService {
 		
 	}
 	
-	public void insertGoods(Goods goods){
+	public boolean insertGoods(Goods goods){
 	
 			{
 //				通过创建人姓名查找创建人id，然后set进去
-				goods.setCreateid(10L);
+//				goods.setCreateid(10L);
 			}
-			goodsMapper.insertGoods();
+			int insert = goodsMapper.insert(goods);
 			{
 //				创建user-goods 关联表
 			}
-		
+		return insert>0?true:false;
 	}
 
 	/**
 	 * 按id删除保险产品（Goods）
 	 * 
 	 * @param ids 以逗号隔开的多个id值
+	 * @return 
 	 *            
 	 */
-	public void deleteGoods(String ids) {
+	public boolean deleteGoods(String ids) {
 		String[] idList = ids.split(",");
+		int count = 0;
 		for (int i = 0; i < idList.length; i++) {
-			goodsMapper.deleteByPrimaryKey(Long.parseLong(idList[i]));
+			count += goodsMapper.deleteByPrimaryKey(Long.parseLong(idList[i]));
 		}
+		return count>0?true:false;
+	}
+
+	public boolean updateProduct(long id, Goods goods) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

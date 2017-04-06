@@ -15,23 +15,17 @@ public class DemoController extends BaseController {
 		// return "/demo/view";
 		return "/proj-a-b/view";
 	}
-	@RequestMapping("/userzero")
-	public String viewb1() {
-		// return "/demo/view";
-		return "/proj-a-f/zero";
-	}
 
-	// 打开子视图
+	// 后台控制 打开子视图
 	@RequestMapping("/tab/{view}")
 	public String tab(@PathVariable("view") String view) {
-		return "/proj-a-f/" + view;
+		return "/proj-a-b/" + view;
 	}
 	
 	
 	//转跳 前台主页面
 	@RequestMapping("/userview")
 	public String viewf() {
-		// return "/demo/view";
 		return "/proj-a-f/index";
 	}
 	// 打开前台 意向 页面
